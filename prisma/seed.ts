@@ -4,7 +4,7 @@ import * as bcrypt from 'bcrypt';
 const prisma = new PrismaClient();
 
 async function main() {
-  console.log('ğŸŒ± Seeding database...');
+  console.log('í¼± Seeding database...');
 
   // Hash password
   const hashedPassword = await bcrypt.hash('admin123', 10);
@@ -16,12 +16,12 @@ async function main() {
 
   if (existingSuperAdmin) {
     console.log('âš ï¸  SuperAdmin already exists. Skipping seed.');
-    console.log('ğŸ“§ Username:', existingSuperAdmin.username);
+    console.log('í³§ Username:', existingSuperAdmin.username);
     return;
   }
 
   // Create SuperAdmin
-  const superAdmin = await prisma.staff.create({
+  await prisma.staff.create({
     data: {
       firstName: 'Super',
       lastName: 'Admin',
@@ -36,10 +36,10 @@ async function main() {
   });
 
   console.log('âœ… SuperAdmin created successfully!');
-  console.log('ğŸ“§ Username: superadmin');
-  console.log('ğŸ”‘ Password: admin123');
-  console.log('ğŸ‘¤ Role: SUPER_ADMIN');
-  console.log('ğŸ‰ Seeding completed!');
+  console.log('í³§ Username: superadmin');
+  console.log('í´‘ Password: admin123');
+  console.log('í±¤ Role: SUPER_ADMIN');
+  console.log('í¾‰ Seeding completed!');
 }
 
 main()
